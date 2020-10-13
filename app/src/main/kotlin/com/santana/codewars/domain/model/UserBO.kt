@@ -8,5 +8,6 @@ data class UserBO(
     val leaderboardPosition: Int?,
     val skills: List<String>?,
     val rankOverall: RankBO,
-    val rankLanguages: List<RankBO>
+    val rankLanguages: List<RankBO>,
+    val challenges: TotalChallengesBO
 )

@@ -51,7 +51,6 @@ class Deps{
             gsonConverter: "com.squareup.retrofit2:converter-gson:$Versions.retrofit"
     ]
 
+    public static final rxjava = "io.reactivex.rxjava3:rxjava:$Versions.rxjava"
     public static final gson = "com.google.code.gson:gson:$Versions.gson"
-    public static final codescanner = "com.budiyev.android:code-scanner:$Versions.codescanner"
-    public static final javautil = "org.clapper:javautil:$Versions.javautil"
 }

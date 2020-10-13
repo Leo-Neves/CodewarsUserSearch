@@ -41,6 +41,7 @@ dependencies {
     implementation Deps.design.values()
     implementation Deps.retrofit.values()
     implementation Deps.gson
+    implementation Deps.rxjava
     testImplementation Deps.unitTests.values()
     androidTestImplementation Deps.automatedTests.values()
 

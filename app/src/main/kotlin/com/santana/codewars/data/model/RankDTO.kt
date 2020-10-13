@@ -7,7 +7,6 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class RankDTO (
     @SerializedName("id") val id: String? = null,
-    @SerializedName("languageName") val languageName: String? = null,
     @SerializedName("rank") val rank: Int = 0,
     @SerializedName("name") val name: String,
     @SerializedName("color") val color: String,

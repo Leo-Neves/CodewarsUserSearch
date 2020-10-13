@@ -42,6 +42,9 @@ class Versions{
     //Retrofit
     public static final retrofit = '2.9.0'
 
+    //ReactiveX
+    public static final rxjava = '3.0.7'
+
     public static final javautil = '3.2.0'
 
     public static final storageutil = '1.1.0'
