@@ -1,6 +1,8 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
 
 android {
     compileSdkVersion 29
@@ -39,9 +41,13 @@ dependencies {
     implementation Deps.kotlinLibs.values()
     implementation Deps.support.values()
     implementation Deps.design.values()
-    implementation Deps.retrofit.values()
+    implementation Deps.networking.values()
+    implementation Deps.database.values()
+    implementation Deps.dependencyInjection
     implementation Deps.gson
     implementation Deps.rxjava
+    kapt Deps.compilers.values()
+    implementation 'android.arch.persistence.room:runtime:1.1.1'
     testImplementation Deps.unitTests.values()
     androidTestImplementation Deps.automatedTests.values()
 

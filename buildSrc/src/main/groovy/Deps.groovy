@@ -15,13 +15,7 @@ class Deps{
     ]
 
     public static final database = [
-            greendao: "org.greenrobot:greendao:$Versions.greendao",
-            sqlcipher: "net.zetetic:android-database-sqlcipher:$Versions.sqlcipher"
-    ]
-
-    public static final analytics = [
-            crashlytics: "com.crashlytics.sdk.android:crashlytics:$Versions.crashlytics",
-            acra: "ch.acra:acra:$Versions.acra"
+            room: "android.arch.persistence.room:runtime:$Versions.room",
     ]
 
     public static final unitTests = [
@@ -37,20 +31,19 @@ class Deps{
             stdlib: "org.jetbrains.kotlin:kotlin-stdlib:$Versions.stdlib",
     ]
 
-    public static final firebase = [
-            firebasecore: "com.google.firebase:firebase-core:$Versions.firebasecore"
-    ]
-
-    public static final storage = [
-            storageutil: "com.github.hendrawd:StorageUtil:$Versions.storageutil",
-            storageChooser: "com.github.codekidX:storage-chooser:$Versions.storageChooser"
-    ]
-
-    public static final retrofit = [
+    public static final networking = [
             retorfit: "com.squareup.retrofit2:retrofit:$Versions.retrofit",
-            gsonConverter: "com.squareup.retrofit2:converter-gson:$Versions.retrofit"
+            gsonConverter: "com.squareup.retrofit2:converter-gson:$Versions.retrofit",
+            okhttp: "com.squareup.okhttp3:okhttp:$Versions.okhttp",
+            okhttpLoggingInterceptor: "com.squareup.okhttp3:logging-interceptor:$Versions.okhttp"
     ]
 
+    public static final compilers = [
+            roomCompiler: "android.arch.persistence.room:compiler:$Versions.room",
+            hiltCompiler: "com.google.dagger:hilt-android-compiler:$Versions.hilt"
+    ]
+
+    public static final dependencyInjection = "com.google.dagger:hilt-android:$Versions.hilt"
     public static final rxjava = "io.reactivex.rxjava3:rxjava:$Versions.rxjava"
     public static final gson = "com.google.code.gson:gson:$Versions.gson"
 }

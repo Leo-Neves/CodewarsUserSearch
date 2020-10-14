@@ -13,12 +13,10 @@ class Versions{
     public static final material = '1.1.0'
 
     //Databases
-    public static final greendao = '3.3.0'
-    public static final sqlcipher = '4.2.0'
+    public static final room = '1.1.1'
 
-    //Analytics and tagging
-    public static final crashlytics = '2.10.1'
-    public static final acra = '4.11'
+    //Dependency injection
+    public static final hilt = '2.28-alpha'
 
     //Tests
     public static final junit = '4.13'
@@ -30,24 +28,14 @@ class Versions{
     //Kotlin libraries
     public static final stdlib = '1.3.72'
 
-    //QRCode scanner
-    public static final codescanner = '2.1.0'
-
-    //Firebase
-    public static final firebasecore = '17.4.4'
-
     //Parsers
     public static final gson = '2.8.6'
 
-    //Retrofit
+    //Networking
     public static final retrofit = '2.9.0'
+    public static final okhttp = '4.9.0'
 
     //ReactiveX
     public static final rxjava = '3.0.7'
-
-    public static final javautil = '3.2.0'
-
-    public static final storageutil = '1.1.0'
-    public static final storageChooser = '2.0.4.4'
 
 }
