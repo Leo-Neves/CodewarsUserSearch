@@ -43,5 +43,6 @@ class Versions{
 
     //ReactiveX
     public static final rxjava = '3.0.7'
+    public static final rxjavaRetrofitAdapter = '3.0.0'
 
 }

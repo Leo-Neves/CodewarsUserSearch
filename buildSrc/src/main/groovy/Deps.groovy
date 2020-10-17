@@ -56,6 +56,9 @@ class Deps{
             hiltLifecycle: "androidx.hilt:hilt-lifecycle-viewmodel:$Versions.hiltLifecycle"
     ]
 
-    public static final rxjava = "io.reactivex.rxjava3:rxjava:$Versions.rxjava"
+    public static final rxjava = [
+            rxjava: "io.reactivex.rxjava3:rxjava:$Versions.rxjava",
+            rxjavaRetrofitAdapter: "com.github.akarnokd:rxjava3-retrofit-adapter:$Versions.rxjavaRetrofitAdapter"
+    ]
     public static final gson = "com.google.code.gson:gson:$Versions.gson"
 }

@@ -1,3 +1,6 @@
 <resources>
-    <string name="app_name">Codewars</string>
+    <string name="app_name">Codewars API</string>
+    <string name="out_of_leaderboard">Out of leaderboard</string>
+    <string name="leaderboard_position">Leaderboard position: %1$s</string>
+    <string name="best_language">Best language: %1$s</string>
 </resources>

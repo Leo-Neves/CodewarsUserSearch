@@ -7,10 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.santana.codewars.R
 import com.santana.codewars.domain.model.UserBO
-import com.santana.codewars.domain.usecase.ListUsersUseCase
 import com.santana.codewars.state.StateResponse
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -34,7 +32,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-        viewModel.liveData.observe(this, observer)
+        viewModel.usersLiveData.observe(this, observer)
         viewModel.fetchUsers("Leo-Neves")
     }
 }
