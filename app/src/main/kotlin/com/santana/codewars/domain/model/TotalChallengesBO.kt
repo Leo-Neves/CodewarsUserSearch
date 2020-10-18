@@ -1,6 +1,11 @@
 package com.santana.codewars.domain.model
 
+import android.os.Parcelable
+import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class TotalChallengesBO(
-    val totalAuthored: Int,
-    val totalCompleted: Int
-)
+    @SerializedName("totalAuthored") val totalAuthored: Int,
+    @SerializedName("totalCompleted") val totalCompleted: Int
+):Parcelable
