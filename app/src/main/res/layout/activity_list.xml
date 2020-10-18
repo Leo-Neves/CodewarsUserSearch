@@ -60,6 +60,7 @@
             android:layout_width="@dimen/size_100"
             android:layout_height="@dimen/size_40"
             android:layout_gravity="center"
+            android:indeterminateTint="@android:color/white"
             android:visibility="gone"/>
 
     </LinearLayout>

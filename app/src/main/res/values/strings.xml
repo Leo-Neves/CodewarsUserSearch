@@ -2,7 +2,7 @@
     <string name="app_name">Codewars API</string>
 
     <!-- User's list -->
-    <string name="users_list">Users</string>
+    <string name="users_list">Codewars users list</string>
     <string name="out_of_leaderboard">Out of leaderboard</string>
     <string name="leaderboard_position">Leaderboard position: %1$d</string>
     <string name="best_language">Best language is %1$s with score %2$d</string>
@@ -16,7 +16,7 @@
     <string name="error_user">User \'%1$s\' not found</string>
 
     <!-- Challenges -->
-    <string name="challenges">Challenges</string>
+    <string name="challenges">Challenges of %1$s</string>
     <string name="authored">Authored</string>
     <string name="completed">Completed</string>
 </resources>

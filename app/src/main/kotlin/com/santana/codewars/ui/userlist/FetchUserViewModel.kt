@@ -35,13 +35,15 @@ class FetchUserViewModel @ViewModelInject constructor(
             }.subscribe({
                 _usersLiveData.postValue(UserSuccess(it))
             }, {
-                if (it is HttpException){
-                    _usersLiveData.value = if (it.code() == 404){
-                        UserNotFound(user)
-                    }else{
-                        NetworkError(it)
-                    }
-                }else{
+                if (it is HttpException) {
+                    _usersLiveData.postValue(
+                        if (it.code() == 404) {
+                            UserNotFound(user)
+                        } else {
+                            NetworkError(it)
+                        }
+                    )
+                } else {
                     _usersLiveData.postValue(GenericError(it))
                 }
             })
@@ -57,7 +59,7 @@ class FetchUserViewModel @ViewModelInject constructor(
         listUsers()
     }
 
-    private fun listUsers(){
+    private fun listUsers() {
         listUseCase.execute(ListUsersUseCase.Params(listOrder))
             .subscribeOn(Schedulers.io())
             .subscribe({
