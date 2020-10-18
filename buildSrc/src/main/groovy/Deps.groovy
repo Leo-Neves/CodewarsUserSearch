@@ -8,6 +8,7 @@ class Deps{
             collectionsKtx: "androidx.collection:collection-ktx:$Versions.collectionsktx",
             fragmentKtx: "androidx.fragment:fragment-ktx:$Versions.fragmentKtx",
             lifecycleKtx: "androidx.lifecycle:lifecycle-runtime-ktx:$Versions.lifecycleKtx",
+            lifecycleExtensions: "androidx.lifecycle:lifecycle-extensions:$Versions.lifecycleExtensions",
             percentlayout: "androidx.percentlayout:percentlayout:$Versions.percentlayout",
             multidex: "androidx.multidex:multidex:$Versions.multidex"
     ]
@@ -18,8 +19,9 @@ class Deps{
     ]
 
     public static final database = [
-            room: "android.arch.persistence.room:runtime:$Versions.room",
-            roomKotlin: "androidx.room:room-ktx:$Versions.room"
+            room: "androidx.room:room-runtime:$Versions.room",
+            roomKotlin: "androidx.room:room-ktx:$Versions.room",
+            roomRxJava: "androidx.room:room-rxjava2:$Versions.room"
     ]
 
     public static final unitTests = [
@@ -56,6 +58,9 @@ class Deps{
             hiltLifecycle: "androidx.hilt:hilt-lifecycle-viewmodel:$Versions.hiltLifecycle"
     ]
 
-    public static final rxjava = "io.reactivex.rxjava3:rxjava:$Versions.rxjava"
+    public static final rxjava = [
+            rxjava: "io.reactivex.rxjava2:rxandroid:$Versions.rxjava",
+            rxjavaRetrofitAdapter: "com.squareup.retrofit2:adapter-rxjava2:$Versions.retrofit"
+    ]
     public static final gson = "com.google.code.gson:gson:$Versions.gson"
 }

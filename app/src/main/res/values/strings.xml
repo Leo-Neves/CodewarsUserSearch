@@ -1,3 +1,22 @@
 <resources>
-    <string name="app_name">Codewars</string>
+    <string name="app_name">Codewars API</string>
+
+    <!-- User's list -->
+    <string name="users_list">Codewars users list</string>
+    <string name="out_of_leaderboard">Out of leaderboard</string>
+    <string name="leaderboard_position">Leaderboard position: %1$d</string>
+    <string name="best_language">Best language is %1$s with score %2$d</string>
+    <string name="zero_languages">No scoring languages</string>
+    <string name="no_searched_users">No users searched yet</string>
+    <string name="search_user">search user…</string>
+    <string name="order_by_recent">Order by recent</string>
+    <string name="order_by_rank">Order by rank</string>
+    <string name="error_network">Connection refused, try again later</string>
+    <string name="error_generic">Please try again later</string>
+    <string name="error_user">User \'%1$s\' not found</string>
+
+    <!-- Challenges -->
+    <string name="challenges">Challenges of %1$s</string>
+    <string name="authored">Authored</string>
+    <string name="completed">Completed</string>
 </resources>

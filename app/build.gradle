@@ -70,10 +70,11 @@ dependencies {
     implementation Deps.support.values()
     implementation Deps.design.values()
     implementation Deps.networking.values()
-    implementation Deps.database.values()
     implementation Deps.dependencyInjection.values()
+    implementation Deps.database.values()
+    implementation Deps.rxjava.values()
     implementation Deps.gson
-    implementation Deps.rxjava
+    kapt "androidx.lifecycle:lifecycle-compiler:2.1.0"
     kapt Deps.compilers.values()
     testImplementation Deps.unitTests.values()
     androidTestImplementation Deps.automatedTests.values()
