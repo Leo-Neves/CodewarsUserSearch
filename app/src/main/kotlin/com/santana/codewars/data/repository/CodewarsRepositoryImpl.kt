@@ -3,13 +3,14 @@ package com.santana.codewars.data.repository
 import com.santana.codewars.data.CodewarsApi
 import com.santana.codewars.data.dao.UserDao
 import com.santana.codewars.data.mapper.toBO
-import com.santana.codewars.data.model.UserDTO
 import com.santana.codewars.domain.enum.UserOrder
 import com.santana.codewars.domain.enum.UserOrder.RECENT
-import com.santana.codewars.domain.model.*
+import com.santana.codewars.domain.model.CodeChallengeBO
+import com.santana.codewars.domain.model.UserBO
+import com.santana.codewars.domain.model.UserChallengesAuthoredBO
+import com.santana.codewars.domain.model.UserChallengesCompletedBO
 import com.santana.codewars.domain.repository.CodewarsRepository
-import io.reactivex.rxjava3.core.Single
-import javax.inject.Inject
+import io.reactivex.Single
 
 class CodewarsRepositoryImpl(
     private val api: CodewarsApi,
@@ -21,10 +22,8 @@ class CodewarsRepositoryImpl(
     }
 
     override fun getUsers(order: UserOrder?): Single<List<UserBO>> {
-        return Single.just(
-            if (order == RECENT) userDao.listUsersOrderByRecent()
-            else userDao.listUsersOrderByRank()
-        )
+        return if (order == RECENT) userDao.listUsersOrderByRecent()
+        else userDao.listUsersOrderByRank()
     }
 
     override fun saveUser(userBO: UserBO): Single<Any> {

@@ -3,7 +3,7 @@ package com.santana.codewars.domain.usecase
 import com.santana.codewars.domain.enum.UserOrder
 import com.santana.codewars.domain.model.UserBO
 import com.santana.codewars.domain.repository.CodewarsRepository
-import io.reactivex.rxjava3.core.Single
+import io.reactivex.Single
 
 class ListUsersUseCase(
     val repository: CodewarsRepository

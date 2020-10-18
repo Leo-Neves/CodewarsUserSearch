@@ -4,7 +4,7 @@ import com.santana.codewars.data.model.CodeChallengeDTO
 import com.santana.codewars.data.model.UserChallengesAuthoredDTO
 import com.santana.codewars.data.model.UserChallengesCompletedDTO
 import com.santana.codewars.data.model.UserDTO
-import io.reactivex.rxjava3.core.Single
+import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

@@ -2,7 +2,7 @@ package com.santana.codewars.domain.repository
 
 import com.santana.codewars.domain.enum.UserOrder
 import com.santana.codewars.domain.model.*
-import io.reactivex.rxjava3.core.Single
+import io.reactivex.Single
 
 interface CodewarsRepository {
     fun getUserInfo(userId: String): Single<UserBO>

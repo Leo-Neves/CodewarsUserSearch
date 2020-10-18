@@ -10,13 +10,14 @@ class Versions{
     public static final collectionsktx = '1.1.0'
     public static final fragmentKtx = '1.2.5'
     public static final lifecycleKtx = '1.2.5'
+    public static final lifecycleExtensions = '2.1.0'
 
     //Design
     public static final vectordrawable = '1.1.0'
     public static final material = '1.1.0'
 
     //Databases
-    public static final room = '2.3.0-alpha03'
+    public static final room = '2.3.0-alpha02'
 
     //Dependency injection
     public static final hilt = '2.28-alpha'
@@ -42,7 +43,7 @@ class Versions{
     public static final okhttp = '4.9.0'
 
     //ReactiveX
-    public static final rxjava = '3.0.7'
+    public static final rxjava = '2.1.1'
     public static final rxjavaRetrofitAdapter = '3.0.0'
 
 }
