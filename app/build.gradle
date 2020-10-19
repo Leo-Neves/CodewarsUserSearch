@@ -17,13 +17,37 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
-    buildTypes {
+    signingConfigs {
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            storeFile file("keys/android.jks")
+            storePassword "saveinformatica"
+            keyAlias "save"
+            keyPassword "saveinformatica"
+        }
+        debug {
+            storeFile file("keys/android.jks")
+            storePassword "saveinformatica"
+            keyAlias "save"
+            keyPassword "saveinformatica"
         }
     }
 
+    buildTypes {
+        release {
+            minifyEnabled false
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        debug {
+            versionNameSuffix '-dev'
+            minifyEnabled false
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
+            debuggable true
+        }
+    }
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
         test.java.srcDirs += 'src/test/kotlin'
@@ -34,6 +58,14 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -42,12 +74,12 @@ dependencies {
     implementation Deps.support.values()
     implementation Deps.design.values()
     implementation Deps.networking.values()
+    implementation Deps.dependencyInjection.values()
     implementation Deps.database.values()
-    implementation Deps.dependencyInjection
+    implementation Deps.rxjava.values()
     implementation Deps.gson
-    implementation Deps.rxjava
+    kapt "androidx.lifecycle:lifecycle-compiler:2.1.0"
     kapt Deps.compilers.values()
-    implementation 'android.arch.persistence.room:runtime:1.1.1'
     testImplementation Deps.unitTests.values()
     androidTestImplementation Deps.automatedTests.values()
 

@@ -5,21 +5,28 @@ class Versions{
     public static final cardview = '1.0.0'
     public static final constraintlayout = '2.0.2'
     public static final percentlayout = '1.0.0'
-    public static final corektx = '1.3.0'
     public static final multidex = '2.0.1'
+    public static final corektx = '1.3.2'
+    public static final collectionsktx = '1.1.0'
+    public static final fragmentKtx = '1.2.5'
+    public static final lifecycleKtx = '1.2.5'
+    public static final lifecycleExtensions = '2.1.0'
 
     //Design
-    public static final vectordrawable = '1.1.0'
+    public static final paging = '3.0.0-alpha07'
     public static final material = '1.1.0'
 
     //Databases
-    public static final room = '1.1.1'
+    public static final room = '2.3.0-alpha02'
 
     //Dependency injection
     public static final hilt = '2.28-alpha'
+    public static final hiltLifecycle = '1.0.0-alpha01'
 
     //Tests
     public static final junit = '4.13'
+    public static final coreTesting = '1.1.0'
+    public static final mockk = '1.9.1'
 
     //Android tests
     public static final runner = '1.0.2'
@@ -36,6 +43,7 @@ class Versions{
     public static final okhttp = '4.9.0'
 
     //ReactiveX
-    public static final rxjava = '3.0.7'
+    public static final rxjava = '2.1.1'
+    public static final rxjavaRetrofitAdapter = '3.0.0'
 
 }

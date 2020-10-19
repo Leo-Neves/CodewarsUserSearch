@@ -5,21 +5,31 @@ class Deps{
             recyclerview: "androidx.recyclerview:recyclerview:$Versions.recyclerview",
             cardview: "androidx.cardview:cardview:$Versions.cardview",
             corektx: "androidx.core:core-ktx:$Versions.corektx",
+            collectionsKtx: "androidx.collection:collection-ktx:$Versions.collectionsktx",
+            fragmentKtx: "androidx.fragment:fragment-ktx:$Versions.fragmentKtx",
+            lifecycleKtx: "androidx.lifecycle:lifecycle-runtime-ktx:$Versions.lifecycleKtx",
+            lifecycleExtensions: "androidx.lifecycle:lifecycle-extensions:$Versions.lifecycleExtensions",
             percentlayout: "androidx.percentlayout:percentlayout:$Versions.percentlayout",
             multidex: "androidx.multidex:multidex:$Versions.multidex"
     ]
 
     public static final design = [
             material: "com.google.android.material:material:$Versions.material",
-            vectordrawable: "androidx.vectordrawable:vectordrawable:$Versions.vectordrawable"
+            paging: "androidx.paging:paging-runtime:$Versions.paging",
+            pagingRxjava: "androidx.paging:paging-rxjava2:$Versions.paging"
     ]
 
     public static final database = [
-            room: "android.arch.persistence.room:runtime:$Versions.room",
+            room: "androidx.room:room-runtime:$Versions.room",
+            roomKotlin: "androidx.room:room-ktx:$Versions.room",
+            roomRxJava: "androidx.room:room-rxjava2:$Versions.room"
     ]
 
     public static final unitTests = [
-            junit: "junit:junit:$Versions.junit"
+            junit: "junit:junit:$Versions.junit",
+            roomTests: "androidx.room:room-testing:$Versions.room",
+            androidCore: "android.arch.core:core-testing:$Versions.coreTesting",
+            mockk: "io.mockk:mockk:$Versions.mockk"
     ]
 
     public static final automatedTests = [
@@ -40,10 +50,18 @@ class Deps{
 
     public static final compilers = [
             roomCompiler: "android.arch.persistence.room:compiler:$Versions.room",
-            hiltCompiler: "com.google.dagger:hilt-android-compiler:$Versions.hilt"
+            daggerCompiler: "com.google.dagger:hilt-android-compiler:$Versions.hilt",
+            hiltCompiler: "androidx.hilt:hilt-compiler:$Versions.hiltLifecycle"
     ]
 
-    public static final dependencyInjection = "com.google.dagger:hilt-android:$Versions.hilt"
-    public static final rxjava = "io.reactivex.rxjava3:rxjava:$Versions.rxjava"
+    public static final dependencyInjection = [
+            hilt: "com.google.dagger:hilt-android:$Versions.hilt",
+            hiltLifecycle: "androidx.hilt:hilt-lifecycle-viewmodel:$Versions.hiltLifecycle"
+    ]
+
+    public static final rxjava = [
+            rxjava: "io.reactivex.rxjava2:rxandroid:$Versions.rxjava",
+            rxjavaRetrofitAdapter: "com.squareup.retrofit2:adapter-rxjava2:$Versions.retrofit"
+    ]
     public static final gson = "com.google.code.gson:gson:$Versions.gson"
 }
