@@ -2,14 +2,12 @@ package com.santana.codewars.data
 
 import android.accounts.NetworkErrorException
 import com.santana.codewars.data.dao.UserDao
-import com.santana.codewars.data.mapper.toBO
 import com.santana.codewars.data.repository.CodewarsRepositoryImpl
 import com.santana.codewars.domain.model.UserBO
 import com.santana.codewars.factory.UserFactory.mockUser
 import io.mockk.every
 import io.mockk.mockk
-import io.reactivex.rxjava3.core.Single
-import org.mockito.ArgumentMatchers.any
+import io.reactivex.Single
 
 object CodewarsRepositoryRobot {
     private val api = mockk<CodewarsApi>()

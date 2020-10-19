@@ -23,4 +23,6 @@ object UserFactory {
             totalAuthored = 0,
             totalCompleted = 2
         )
+
+
 }
