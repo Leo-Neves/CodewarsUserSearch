@@ -7,8 +7,7 @@ import com.santana.codewars.data.dao.UserDao
 import com.santana.codewars.data.database.CodewarsDatabase
 import com.santana.codewars.data.repository.CodewarsRepositoryImpl
 import com.santana.codewars.domain.repository.CodewarsRepository
-import com.santana.codewars.domain.usecase.FetchUsersUseCase
-import com.santana.codewars.domain.usecase.ListUsersUseCase
+import com.santana.codewars.domain.usecase.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -92,4 +91,19 @@ object CodewarsModule {
     @Singleton
     fun providesFetchUsersUseCase(repository: CodewarsRepository, listUsersUseCase: ListUsersUseCase) =
         FetchUsersUseCase(repository, listUsersUseCase)
+
+    @Provides
+    @Singleton
+    fun providesFetchChallengesCompletedUseCase(repository: CodewarsRepository) =
+        FetchChallengesCompletedUseCase(repository)
+
+    @Provides
+    @Singleton
+    fun providesFetchChallengesAuthoredUseCase(repository: CodewarsRepository) =
+        FetchChallengesAuthoredUseCase(repository)
+
+    @Provides
+    @Singleton
+    fun providesFetchChallengeDetailsUseCase(repository: CodewarsRepository) =
+        FetchChallengeDetailsUseCase(repository)
 }

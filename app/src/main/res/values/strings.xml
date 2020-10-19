@@ -19,4 +19,17 @@
     <string name="challenges">Challenges of %1$s</string>
     <string name="authored">Authored</string>
     <string name="completed">Completed</string>
+    <string name="out_of_rank">Out of rank</string>
+    <string name="rank_position">Rank position: %1$d</string>
+    <string name="no_tags">No tags for this challenge</string>
+    <string name="tags">Tags: %1$s</string>
+    <string name="no_languages">No languages for this challenge</string>
+    <string name="languages">Languages: %s</string>
+    <string name="no_languages_completed">Challenge was not completed</string>
+    <string name="languages_completed">Challenge was completed using %s</string>
+    <string name="separator">, </string>
+    <string name="try_again">Try again</string>
+    <string name="no_more_challenges">No more challenges to show</string>
+
+    <!--  -->
 </resources>

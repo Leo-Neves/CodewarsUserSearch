@@ -19,7 +19,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvUsers"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/defaultSize_0dp"
+        android:layout_height="@dimen/size_0dp"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintBottom_toTopOf="@id/llSearchUser"
         tools:listitem="@layout/row_user"/>

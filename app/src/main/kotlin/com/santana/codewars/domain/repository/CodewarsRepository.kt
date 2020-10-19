@@ -9,6 +9,6 @@ interface CodewarsRepository {
     fun getUsers(order: UserOrder?): Single<List<UserBO>>
     fun saveUser(userBO: UserBO): Single<Any>
     fun getCodeChallenge(challengeId: String): Single<CodeChallengeBO>
-    fun getCompletedChallenges(userId: String): Single<UserChallengesCompletedBO>
-    fun getAuthoredChallenges(userId: String): Single<UserChallengesAuthoredBO>
+    fun getCompletedChallenges(userId: String, page: Int): Single<UserChallengesCompletedBO>
+    fun getAuthoredChallenges(userId: String, page: Int): Single<UserChallengesAuthoredBO>
 }

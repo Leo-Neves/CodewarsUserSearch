@@ -19,7 +19,7 @@ class UsersAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return if (users.isEmpty()) {
-            EmptyHolder(inflateAdapter(R.layout.row_empty, parent))
+            EmptyHolder(inflateAdapter(R.layout.row_empty_users, parent))
         } else {
             UserHolder(inflateAdapter(R.layout.row_user, parent))
         }
@@ -42,7 +42,7 @@ class UsersAdapter(
 
     class UserHolder(
         itemView: View,
-        var tvName: TextView = itemView.findViewById(R.id.tvUser),
+        var tvName: TextView = itemView.findViewById(R.id.tvChallenge),
         var tvBestLanguage: TextView = itemView.findViewById(R.id.tvBestLanguage),
         var tvLeaderboardPosition: TextView = itemView.findViewById(R.id.tvLeaderboardPosition)
     ) : ViewHolder(itemView) {

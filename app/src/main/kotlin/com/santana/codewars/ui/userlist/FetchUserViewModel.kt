@@ -17,7 +17,7 @@ import io.reactivex.schedulers.Schedulers
 import retrofit2.HttpException
 
 class FetchUserViewModel @ViewModelInject constructor(
-    private val fetchUseCase: FetchUsersUseCase,
+    private val fetchUsersUseCase: FetchUsersUseCase,
     private val listUseCase: ListUsersUseCase,
     @Assisted private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
@@ -28,7 +28,7 @@ class FetchUserViewModel @ViewModelInject constructor(
     private var listOrder = RECENT
 
     fun fetchUsers(user: String) {
-        fetchUseCase.execute(FetchUsersUseCase.Params(user, listOrder))
+        val disposable = fetchUsersUseCase.execute(FetchUsersUseCase.Params(user, listOrder))
             .subscribeOn(Schedulers.io())
             .doOnSubscribe {
                 _usersLiveData.postValue(UserLoading())

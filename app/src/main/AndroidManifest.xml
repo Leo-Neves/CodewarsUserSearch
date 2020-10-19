@@ -22,6 +22,8 @@
 
         <activity android:name=".ui.userchallenges.ChallengesActivity"/>
 
+        <activity android:name=".ui.challengedetails.ChallengeDetailsActivity"/>
+
     </application>
 
 </manifest>
