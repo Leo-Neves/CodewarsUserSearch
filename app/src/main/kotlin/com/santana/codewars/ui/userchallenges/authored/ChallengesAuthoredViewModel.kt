@@ -8,10 +8,12 @@ import com.santana.codewars.domain.model.ChallengesAuthoredBO
 import com.santana.codewars.domain.model.UserBO
 import com.santana.codewars.domain.usecase.FetchChallengesAuthoredUseCase
 import com.santana.codewars.state.StateResponse
+import io.reactivex.Scheduler
 import io.reactivex.schedulers.Schedulers
 
 class ChallengesAuthoredViewModel @ViewModelInject constructor(
-    private val challengesAuthoredUseCase: FetchChallengesAuthoredUseCase
+    private val challengesAuthoredUseCase: FetchChallengesAuthoredUseCase,
+    private val scheduler: Scheduler
 ) : ViewModel() {
 
     private val _challengesLiveData = MutableLiveData<StateResponse<List<ChallengesAuthoredBO>>>()
@@ -25,7 +27,7 @@ class ChallengesAuthoredViewModel @ViewModelInject constructor(
     fun fetchChallengesCompleted(page: Int) {
         val disposable = challengesAuthoredUseCase
             .execute(FetchChallengesAuthoredUseCase.Params(user.username, page))
-            .subscribeOn(Schedulers.io())
+            .subscribeOn(scheduler)
             .doOnSubscribe {
                 _challengesLiveData.postValue(StateResponse.StateLoading())
             }

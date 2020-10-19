@@ -20,5 +20,7 @@ data class CodeChallengeDTO (
     val totalAttempts: Int,
     val totalCompleted: Int,
     val totalStars: Int,
-    val tags: List<String>
+    val voteScore: Int,
+    val tags: List<String>,
+    val unresolved: UnresolvedIssuesDTO?
 ): Parcelable

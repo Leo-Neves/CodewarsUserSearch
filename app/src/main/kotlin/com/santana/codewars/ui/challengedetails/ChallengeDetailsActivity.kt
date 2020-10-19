@@ -1,45 +1,32 @@
 package com.santana.codewars.ui.challengedetails
 
 import android.os.Bundle
-import android.widget.ProgressBar
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.Observer
 import com.santana.codewars.R
+import com.santana.codewars.databinding.ActivityDetailsBinding
 import com.santana.codewars.domain.model.CodeChallengeBO
 import com.santana.codewars.state.StateResponse
+import com.santana.codewars.state.StateResponse.*
 import com.santana.codewars.ui.userchallenges.ChallengesActivity.Companion.CHALLENGE_SELECTED
 import com.santana.codewars.utils.setVisibility
+import com.santana.codewars.utils.splitStringList
+import com.santana.codewars.utils.toTimeString
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ChallengeDetailsActivity: AppCompatActivity() {
+class ChallengeDetailsActivity : AppCompatActivity() {
 
     private val viewModel: ChallengeDetailsViewModel by viewModels()
     private val challengeId by lazy { intent.getStringExtra(CHALLENGE_SELECTED) }
 
-    private val clDetails by lazy { findViewById<ConstraintLayout>(R.id.clDetails) }
-    private val pbDetails by lazy { findViewById<ProgressBar>(R.id.pbDetails) }
-    private val tvChallenge by lazy { findViewById<TextView>(R.id.tvChallenge) }
-    private val tvSlug by lazy { findViewById<TextView>(R.id.tvSlug) }
-    private val tvCategory by lazy { findViewById<TextView>(R.id.tvCategory) }
-    private val tvPublishedAt by lazy { findViewById<TextView>(R.id.tvPublishedAt) }
-    private val tvApprovedAt by lazy { findViewById<TextView>(R.id.tvApprovedAt) }
-    private val tvLanguages by lazy { findViewById<TextView>(R.id.tvLanguages) }
-    private val tvDescription by lazy { findViewById<TextView>(R.id.tvDescription) }
-    private val tvTotalAttempts by lazy { findViewById<TextView>(R.id.tvTotalAttempts) }
-    private val tvTotalCompleted by lazy { findViewById<TextView>(R.id.tvTotalCompleted) }
-    private val tvTotalStars by lazy { findViewById<TextView>(R.id.tvTotalStars) }
-    private val tvVoteScore by lazy { findViewById<TextView>(R.id.tvVoteScore) }
-    private val tvTags by lazy { findViewById<TextView>(R.id.tvTags) }
-    private val tvUnresolvedIsuues by lazy { findViewById<TextView>(R.id.tvUnresolvedIsuues) }
+    private val binding by lazy { ActivityDetailsBinding.inflate(layoutInflater) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_details)
+        setContentView(binding.root)
         setupViews()
         setupObserver()
         viewModel.fetchChallengeDetails()
@@ -49,25 +36,25 @@ class ChallengeDetailsActivity: AppCompatActivity() {
         showLoading()
     }
 
-    private fun showLoading(){
-        clDetails.setVisibility(false)
-        pbDetails.setVisibility(true)
+    private fun showLoading() {
+        binding.groupDetails.setVisibility(false)
+        binding.pbDetails.setVisibility(true)
     }
 
-    private fun hideLoading(){
-        clDetails.setVisibility(true)
-        pbDetails.setVisibility(false)
+    private fun hideLoading() {
+        binding.groupDetails.setVisibility(true)
+        binding.pbDetails.setVisibility(false)
     }
 
     private fun setupObserver() {
-        val observer = Observer<StateResponse<CodeChallengeBO>>{ state->
-            when(state){
-                is StateResponse.StateLoading -> showLoading()
-                is StateResponse.StateSuccess -> {
+        val observer = Observer<StateResponse<CodeChallengeBO>> { state ->
+            when (state) {
+                is StateLoading -> showLoading()
+                is StateSuccess -> {
                     hideLoading()
                     populateChallengeDetails(state.data)
                 }
-                is StateResponse.GenericError -> {
+                is GenericError -> {
                     hideLoading()
                     showErrorMessage()
                 }
@@ -78,10 +65,33 @@ class ChallengeDetailsActivity: AppCompatActivity() {
     }
 
     private fun populateChallengeDetails(challengeDetails: CodeChallengeBO) {
-        tvChallenge.text = challengeDetails.name
+        challengeDetails.apply {
+            binding.tvChallenge.text = name
+            binding.tvSlug.text = getString(R.string.slug_value, slug)
+            binding.tvCategory.text = getString(R.string.category_value, category)
+            binding.tvDescription.text = getString(R.string.description_value, description)
+            binding.tvTotalAttempts.text = getString(R.string.attempts_value, totalAttempts)
+            binding.tvTotalCompleted.text = getString(R.string.completed_value, totalCompleted)
+            binding.tvTotalStars.text = getString(R.string.stars_value, totalStars)
+            binding.tvVoteScore.text = getString(R.string.votes_value, voteScore)
+            binding.tvPublishedAt.text =
+                getString(R.string.published_value, publishedAt?.toTimeString())
+            binding.tvApprovedAt.text =
+                getString(R.string.approved_value, approvedAt?.toTimeString())
+            binding.tvLanguages.text = languages.splitStringList(
+                baseContext,
+                R.string.no_languages,
+                R.string.languages_value
+            )
+            binding.tvTags.text = tags.splitStringList(
+                baseContext,
+                R.string.no_tags,
+                R.string.tags_value
+            )
+        }
     }
 
-    private fun showErrorMessage(){
+    private fun showErrorMessage() {
         Toast.makeText(this, R.string.error_generic, Toast.LENGTH_LONG).show()
     }
 }

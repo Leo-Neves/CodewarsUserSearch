@@ -7,10 +7,11 @@ import androidx.lifecycle.ViewModel
 import com.santana.codewars.domain.model.CodeChallengeBO
 import com.santana.codewars.domain.usecase.FetchChallengeDetailsUseCase
 import com.santana.codewars.state.StateResponse
-import io.reactivex.schedulers.Schedulers
+import io.reactivex.Scheduler
 
 class ChallengeDetailsViewModel @ViewModelInject constructor(
-    private val fetchChallengeDetailsUseCase: FetchChallengeDetailsUseCase
+    private val fetchChallengeDetailsUseCase: FetchChallengeDetailsUseCase,
+    private val scheduler: Scheduler
 ): ViewModel(){
 
     private val _challengeLiveData = MutableLiveData<StateResponse<CodeChallengeBO>>()
@@ -24,7 +25,7 @@ class ChallengeDetailsViewModel @ViewModelInject constructor(
     fun fetchChallengeDetails() {
         val disposable = fetchChallengeDetailsUseCase
             .execute(FetchChallengeDetailsUseCase.Params(challengeId))
-            .subscribeOn(Schedulers.io())
+            .subscribeOn(scheduler)
             .doOnSubscribe {
                 _challengeLiveData.postValue(StateResponse.StateLoading())
             }

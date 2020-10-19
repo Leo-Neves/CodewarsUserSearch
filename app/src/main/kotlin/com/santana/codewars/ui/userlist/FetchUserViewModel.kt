@@ -1,10 +1,8 @@
 package com.santana.codewars.ui.userlist
 
-import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.santana.codewars.domain.enum.UserOrder.RANK
 import com.santana.codewars.domain.enum.UserOrder.RECENT
@@ -13,13 +11,14 @@ import com.santana.codewars.domain.usecase.FetchUsersUseCase
 import com.santana.codewars.domain.usecase.ListUsersUseCase
 import com.santana.codewars.state.UserResponse
 import com.santana.codewars.state.UserResponse.*
+import io.reactivex.Scheduler
 import io.reactivex.schedulers.Schedulers
 import retrofit2.HttpException
 
 class FetchUserViewModel @ViewModelInject constructor(
     private val fetchUsersUseCase: FetchUsersUseCase,
     private val listUseCase: ListUsersUseCase,
-    @Assisted private val savedStateHandle: SavedStateHandle
+    private val scheduler: Scheduler
 ) : ViewModel() {
 
     private val _usersLiveData = MutableLiveData<UserResponse<List<UserBO>>>()
@@ -29,7 +28,7 @@ class FetchUserViewModel @ViewModelInject constructor(
 
     fun fetchUsers(user: String) {
         val disposable = fetchUsersUseCase.execute(FetchUsersUseCase.Params(user, listOrder))
-            .subscribeOn(Schedulers.io())
+            .subscribeOn(scheduler)
             .doOnSubscribe {
                 _usersLiveData.postValue(UserLoading())
             }.subscribe({
