@@ -88,7 +88,7 @@ class ChallengesAuthoredFragment : Fragment(), ChallengeListener<ChallengesAutho
     override fun onChallengeClicked(challenge: ChallengesAuthoredBO) {
         activity?.apply {
             val intent = Intent(this, ChallengeDetailsActivity::class.java).apply {
-                putExtra(CHALLENGE_SELECTED, challenge)
+                putExtra(CHALLENGE_SELECTED, challenge.id)
             }
             startActivity(intent)
         }

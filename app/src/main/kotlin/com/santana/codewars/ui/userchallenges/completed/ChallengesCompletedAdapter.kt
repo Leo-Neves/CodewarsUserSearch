@@ -10,6 +10,7 @@ import com.santana.codewars.domain.model.ChallengesCompletedBO
 import com.santana.codewars.ui.userchallenges.ChallengesAdapter
 import com.santana.codewars.ui.userchallenges.completed.ChallengesCompletedAdapter.CompletedHolder
 import com.santana.codewars.utils.splitStringList
+import com.santana.codewars.utils.toTimeString
 
 class ChallengesCompletedAdapter(
     private val activity: Activity,
@@ -28,7 +29,7 @@ class ChallengesCompletedAdapter(
     ) {
         holder.tvName.text = challenge.name
         holder.tvSlug.text = challenge.slug
-        holder.tvCompletedDate.text = challenge.completedAt.toString()
+        holder.tvCompletedDate.text = challenge.completedAt.toTimeString()
         holder.tvLanguages.text =
             challenge.completedLanguages.splitStringList(activity, R.string.no_languages_completed, R.string.languages_completed)
     }
