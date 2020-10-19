@@ -7,6 +7,8 @@ import androidx.appcompat.widget.Toolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.santana.codewars.R
 import com.santana.codewars.domain.model.UserBO
+import com.santana.codewars.ui.userchallenges.authored.ChallengesAuthoredFragment
+import com.santana.codewars.ui.userchallenges.completed.ChallengesCompletedFragment
 import com.santana.codewars.ui.userlist.ListActivity
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -22,7 +24,13 @@ class ChallengesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_challenges)
+        setupToolbar()
         setupBottomNavigation()
+        showAuthoredChallenges()
+    }
+
+    private fun setupToolbar() {
+        toolbar.title = getString(R.string.challenges, user?.username)
     }
 
     private fun setupBottomNavigation() {
@@ -36,10 +44,24 @@ class ChallengesActivity : AppCompatActivity() {
     }
 
     private fun showAuthoredChallenges():Boolean{
+        val bundle = Bundle()
+        bundle.putParcelable(CHALLENGE_SELECTED, user)
+        val fragment = ChallengesAuthoredFragment()
+        fragment.arguments = bundle
+        supportFragmentManager.beginTransaction().add(frameLayout.id, fragment).commit()
         return true
     }
 
     private fun showCompletedChallenges(): Boolean {
+        val bundle = Bundle()
+        bundle.putParcelable(CHALLENGE_SELECTED, user)
+        val fragment = ChallengesCompletedFragment()
+        fragment.arguments = bundle
+        supportFragmentManager.beginTransaction().add(frameLayout.id, fragment).commit()
         return true
+    }
+
+    companion object{
+        const val CHALLENGE_SELECTED = "CHALLENGE_SELECTED"
     }
 }

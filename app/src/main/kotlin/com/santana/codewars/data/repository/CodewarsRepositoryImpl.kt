@@ -34,11 +34,11 @@ class CodewarsRepositoryImpl(
         return api.codeChallenge(challengeId).map { it.toBO() }
     }
 
-    override fun getCompletedChallenges(userId: String): Single<UserChallengesCompletedBO> {
-        return api.completedChallenges(userId, 0).map { it.toBO() }
+    override fun getCompletedChallenges(userId: String, page: Int): Single<UserChallengesCompletedBO> {
+        return api.completedChallenges(userId, page).map { it.toBO() }
     }
 
-    override fun getAuthoredChallenges(userId: String): Single<UserChallengesAuthoredBO> {
-        return api.authoredChallenges(userId, 0).map { it.toBO() }
+    override fun getAuthoredChallenges(userId: String, page: Int): Single<UserChallengesAuthoredBO> {
+        return api.authoredChallenges(userId, page).map { it.toBO() }
     }
 }
