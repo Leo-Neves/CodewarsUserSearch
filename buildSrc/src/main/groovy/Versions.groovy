@@ -13,7 +13,7 @@ class Versions{
     public static final lifecycleExtensions = '2.1.0'
 
     //Design
-    public static final paging = '3.0.0-alpha07'
+    public static final paging = '2.1.0'
     public static final material = '1.1.0'
 
     //Databases

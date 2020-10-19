@@ -11,4 +11,16 @@ data class ChallengesCompletedBO (
     val slug: String,
     val completedAt: Date,
     val completedLanguages: List<String>
-): Parcelable
+): Parcelable, ChallengeBO {
+    override fun getChallengeId(): String {
+        return id
+    }
+
+    override fun getChallengeName(): String {
+        return name
+    }
+
+    override fun getChallengeLanguages(): List<String> {
+        return completedLanguages
+    }
+}

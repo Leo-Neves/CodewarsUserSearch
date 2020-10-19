@@ -13,6 +13,9 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
+import io.reactivex.Scheduler
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -48,7 +51,7 @@ object CodewarsModule {
 
     @Provides
     @Singleton
-    fun provideOkHttpClient(@Named("token")token: String): OkHttpClient {
+    fun provideOkHttpClient(@Named("token") token: String): OkHttpClient {
         val loggingInterceptor = HttpLoggingInterceptor()
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
         val tokenInterceptor = Interceptor { chain ->
@@ -83,8 +86,19 @@ object CodewarsModule {
     ): CodewarsRepository =
         CodewarsRepositoryImpl(api, userDao)
 
+    @Singleton
     @Provides
-    fun providesScheduler() = Schedulers.io()
+    @Named("schedulerIO")
+    fun providesSchedulerIO() = Schedulers.io()
+
+    @Singleton
+    @Provides
+    @Named("schedulerMain")
+    fun providesSchedulerMain() = AndroidSchedulers.mainThread()
+
+    @Provides
+    fun providesScheduler(schedulerIO: Scheduler, schedulerMain: Scheduler) =
+        SchedulersParams(schedulerIO, schedulerMain)
 
     @Provides
     @Singleton
@@ -93,7 +107,10 @@ object CodewarsModule {
 
     @Provides
     @Singleton
-    fun providesFetchUsersUseCase(repository: CodewarsRepository, listUsersUseCase: ListUsersUseCase) =
+    fun providesFetchUsersUseCase(
+        repository: CodewarsRepository,
+        listUsersUseCase: ListUsersUseCase
+    ) =
         FetchUsersUseCase(repository, listUsersUseCase)
 
     @Provides
@@ -110,4 +127,16 @@ object CodewarsModule {
     @Singleton
     fun providesFetchChallengeDetailsUseCase(repository: CodewarsRepository) =
         FetchChallengeDetailsUseCase(repository)
+
+    @Provides
+    fun providesCompositeDisposable() = CompositeDisposable()
+
+    @Provides
+    @Singleton
+    fun providesChallengeDataSourceFactory(
+        compositeDisposable: CompositeDisposable,
+        repository: CodewarsRepository,
+        schedulers: SchedulersParams
+    ) =
+        ChallengeDataSourceFactory(compositeDisposable, repository, schedulers)
 }

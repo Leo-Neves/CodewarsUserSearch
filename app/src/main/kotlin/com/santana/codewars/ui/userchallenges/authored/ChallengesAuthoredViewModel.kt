@@ -4,8 +4,10 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.paging.PagedList
 import com.santana.codewars.domain.model.ChallengesAuthoredBO
 import com.santana.codewars.domain.model.UserBO
+import com.santana.codewars.domain.usecase.ChallengeDataSourceFactory
 import com.santana.codewars.domain.usecase.FetchChallengesAuthoredUseCase
 import com.santana.codewars.state.StateResponse
 import io.reactivex.Scheduler
@@ -13,6 +15,7 @@ import io.reactivex.schedulers.Schedulers
 
 class ChallengesAuthoredViewModel @ViewModelInject constructor(
     private val challengesAuthoredUseCase: FetchChallengesAuthoredUseCase,
+    private val challengeDataSourceFactory: ChallengeDataSourceFactory,
     private val scheduler: Scheduler
 ) : ViewModel() {
 
@@ -22,6 +25,14 @@ class ChallengesAuthoredViewModel @ViewModelInject constructor(
 
     fun selectUser(user: UserBO) {
         this.user = user
+    }
+
+    init{
+        val config = PagedList.Config.Builder()
+            .setPageSize(200)
+            .setInitialLoadSizeHint(200)
+            .setEnablePlaceholders(false)
+            .build()
     }
 
     fun fetchChallengesCompleted(page: Int) {

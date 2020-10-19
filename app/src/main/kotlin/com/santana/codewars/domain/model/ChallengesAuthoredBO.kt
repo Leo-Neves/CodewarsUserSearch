@@ -12,4 +12,16 @@ data class ChallengesAuthoredBO (
     val rankName: String?,
     val languages: List<String>,
     val tags: List<String>
-): Parcelable
+): Parcelable, ChallengeBO {
+    override fun getChallengeId(): String {
+        return id
+    }
+
+    override fun getChallengeName(): String {
+        return name
+    }
+
+    override fun getChallengeLanguages(): List<String> {
+        return languages
+    }
+}
