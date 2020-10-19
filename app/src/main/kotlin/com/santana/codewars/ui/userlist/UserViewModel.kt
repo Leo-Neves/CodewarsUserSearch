@@ -15,7 +15,7 @@ import io.reactivex.Scheduler
 import io.reactivex.schedulers.Schedulers
 import retrofit2.HttpException
 
-class FetchUserViewModel @ViewModelInject constructor(
+class UserViewModel @ViewModelInject constructor(
     private val fetchUsersUseCase: FetchUsersUseCase,
     private val listUseCase: ListUsersUseCase,
     private val scheduler: Scheduler

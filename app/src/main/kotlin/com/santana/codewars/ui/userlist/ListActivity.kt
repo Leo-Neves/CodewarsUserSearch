@@ -26,7 +26,7 @@ import kotlinx.android.synthetic.main.activity_list.*
 @AndroidEntryPoint
 class ListActivity : AppCompatActivity() {
 
-    private val viewModel: FetchUserViewModel by viewModels()
+    private val viewModel: UserViewModel by viewModels()
 
     private val rvUsers by lazy { findViewById<RecyclerView>(R.id.rvUsers) }
     private val etSearch by lazy { findViewById<EditText>(R.id.etSearchUser) }

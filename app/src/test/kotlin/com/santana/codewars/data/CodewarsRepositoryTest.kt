@@ -3,7 +3,7 @@ package com.santana.codewars.data
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.santana.codewars.data.CodewarsRepositoryRobot.arrange
 import com.santana.codewars.domain.model.UserBO
-import io.reactivex.rxjava3.core.Single
+import io.reactivex.Single
 import org.junit.Rule
 import org.junit.Test
 
