@@ -13,6 +13,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
+import io.reactivex.schedulers.Schedulers
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -81,6 +82,9 @@ object CodewarsModule {
         userDao: UserDao
     ): CodewarsRepository =
         CodewarsRepositoryImpl(api, userDao)
+
+    @Provides
+    fun providesScheduler() = Schedulers.io()
 
     @Provides
     @Singleton

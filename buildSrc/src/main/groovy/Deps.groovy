@@ -15,7 +15,8 @@ class Deps{
 
     public static final design = [
             material: "com.google.android.material:material:$Versions.material",
-            vectordrawable: "androidx.vectordrawable:vectordrawable:$Versions.vectordrawable"
+            paging: "androidx.paging:paging-runtime:$Versions.paging",
+            pagingRxjava: "androidx.paging:paging-rxjava2:$Versions.paging"
     ]
 
     public static final database = [

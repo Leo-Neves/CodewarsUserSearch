@@ -36,7 +36,7 @@ class UsersAdapter(
         }
     }
 
-    override fun getItemCount(): Int = max(users.size,1)
+    override fun getItemCount(): Int = max(users.size, 1)
 
     class EmptyHolder(itemView: View) : ViewHolder(itemView)
 
@@ -66,7 +66,11 @@ class UsersAdapter(
                     setText(R.string.zero_languages)
                 } else {
                     text = context
-                        .getString(R.string.best_language, bestLanguage.languageName, bestLanguage.score)
+                        .getString(
+                            R.string.best_language,
+                            bestLanguage.languageName?.capitalize(),
+                            bestLanguage.score
+                        )
                 }
             }
             itemView.setOnClickListener { userClickListener.invoke(user) }

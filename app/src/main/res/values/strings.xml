@@ -27,9 +27,21 @@
     <string name="languages">Languages: %s</string>
     <string name="no_languages_completed">Challenge was not completed</string>
     <string name="languages_completed">Challenge was completed using %s</string>
-    <string name="separator">, </string>
     <string name="try_again">Try again</string>
     <string name="no_more_challenges">No more challenges to show</string>
 
-    <!--  -->
+    <!-- Challenges details -->
+    <string name="slug_value">Slug: %s</string>
+    <string name="category_value">Category: %s</string>
+    <string name="published_value">Published at: %s</string>
+    <string name="approved_value">Approved at: %s</string>
+    <string name="languages_value">Languages: %s</string>
+    <string name="description_value">Description: %s</string>
+    <string name="attempts_value">Total attempts: %d</string>
+    <string name="completed_value">Total completed: %d</string>
+    <string name="stars_value">Stars: %d</string>
+    <string name="votes_value">Vote score: %d</string>
+    <string name="tags_value">Tags: %s</string>
+    <string name="issues_value">Unresolved issues: %d</string>
+    <string name="challenge_details">Challenge details</string>
 </resources>

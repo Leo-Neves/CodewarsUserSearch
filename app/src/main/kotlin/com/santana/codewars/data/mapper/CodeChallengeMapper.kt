@@ -8,9 +8,16 @@ fun CodeChallengeDTO.toBO(): CodeChallengeBO =
         id = id,
         name = name,
         slug = slug,
+        description = description,
         category = category,
         publishedAt = publishedAt.toDateWithTimezone(),
         approvedAt = approvedAt.toDateWithTimezone(),
         languages = languages,
-        url = url
+        tags = tags,
+        totalAttempts = totalAttempts,
+        totalCompleted = totalCompleted,
+        totalStars = totalStars,
+        voteScore = voteScore,
+        url = url,
+        unresolvedIssues = unresolved?.issues
     )

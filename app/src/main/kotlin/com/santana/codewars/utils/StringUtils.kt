@@ -1,8 +1,6 @@
 package com.santana.codewars.utils
 
-import android.app.Activity
 import android.content.Context
-import com.santana.codewars.R
 
 fun List<String>.splitStringList(
     context: Context,
@@ -14,7 +12,7 @@ fun List<String>.splitStringList(
     } else {
         context.getString(
             fullListString,
-            joinToString(context.getString(R.string.separator))
+            joinToString { it.capitalize() }
         )
     }
 }

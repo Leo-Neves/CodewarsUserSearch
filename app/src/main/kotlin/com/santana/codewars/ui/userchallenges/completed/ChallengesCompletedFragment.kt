@@ -89,7 +89,7 @@ class ChallengesCompletedFragment : Fragment(), ChallengeListener<ChallengesComp
     override fun onChallengeClicked(challenge: ChallengesCompletedBO) {
         activity?.apply {
             val intent = Intent(this, ChallengeDetailsActivity::class.java).apply {
-                putExtra(CHALLENGE_SELECTED, challenge)
+                putExtra(CHALLENGE_SELECTED, challenge.id)
             }
             startActivity(intent)
         }
