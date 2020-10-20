@@ -12,6 +12,7 @@ import com.santana.codewars.domain.usecase.ListUsersUseCase
 import com.santana.codewars.state.UserResponse
 import com.santana.codewars.state.UserResponse.*
 import io.reactivex.Scheduler
+import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import retrofit2.HttpException
 
@@ -23,6 +24,7 @@ class UserViewModel @ViewModelInject constructor(
 
     private val _usersLiveData = MutableLiveData<UserResponse<List<UserBO>>>()
     val usersLiveData get(): LiveData<UserResponse<List<UserBO>>> = _usersLiveData
+    private val disposables = CompositeDisposable()
 
     private var listOrder = RECENT
 
@@ -46,6 +48,7 @@ class UserViewModel @ViewModelInject constructor(
                     _usersLiveData.postValue(GenericError(it))
                 }
             })
+        disposables.add(disposable)
     }
 
     fun orderUsersByRank() {
@@ -59,13 +62,19 @@ class UserViewModel @ViewModelInject constructor(
     }
 
     private fun listUsers() {
-        listUseCase.execute(ListUsersUseCase.Params(listOrder))
+        val disposable = listUseCase.execute(ListUsersUseCase.Params(listOrder))
             .subscribeOn(Schedulers.io())
             .subscribe({
                 _usersLiveData.postValue(UserSuccess(it))
             }, {
                 _usersLiveData.postValue(NetworkError(it))
             })
+        disposables.add(disposable)
+    }
+
+    override fun onCleared() {
+        disposables.clear()
+        super.onCleared ();
     }
 
 }

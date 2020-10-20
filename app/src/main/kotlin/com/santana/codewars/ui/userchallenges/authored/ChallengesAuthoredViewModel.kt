@@ -9,6 +9,7 @@ import com.santana.codewars.domain.model.UserBO
 import com.santana.codewars.domain.usecase.FetchChallengesAuthoredUseCase
 import com.santana.codewars.state.StateResponse
 import io.reactivex.Scheduler
+import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
 class ChallengesAuthoredViewModel @ViewModelInject constructor(
@@ -18,6 +19,7 @@ class ChallengesAuthoredViewModel @ViewModelInject constructor(
 
     private val _challengesLiveData = MutableLiveData<StateResponse<List<ChallengesAuthoredBO>>>()
     val challengesLiveData get(): LiveData<StateResponse<List<ChallengesAuthoredBO>>> = _challengesLiveData
+    private val disposables = CompositeDisposable()
     private lateinit var user: UserBO
 
     fun selectUser(user: UserBO) {
@@ -42,5 +44,11 @@ class ChallengesAuthoredViewModel @ViewModelInject constructor(
             }, { error ->
                 _challengesLiveData.postValue(StateResponse.GenericError(error))
             })
+        disposables.add(disposable)
+    }
+
+    override fun onCleared() {
+        disposables.clear()
+        super.onCleared ();
     }
 }

@@ -8,6 +8,7 @@ import com.santana.codewars.domain.model.CodeChallengeBO
 import com.santana.codewars.domain.usecase.FetchChallengeDetailsUseCase
 import com.santana.codewars.state.StateResponse
 import io.reactivex.Scheduler
+import io.reactivex.disposables.CompositeDisposable
 
 class ChallengeDetailsViewModel @ViewModelInject constructor(
     private val fetchChallengeDetailsUseCase: FetchChallengeDetailsUseCase,
@@ -16,6 +17,7 @@ class ChallengeDetailsViewModel @ViewModelInject constructor(
 
     private val _challengeLiveData = MutableLiveData<StateResponse<CodeChallengeBO>>()
     val challengeLiveData get(): LiveData<StateResponse<CodeChallengeBO>> = _challengeLiveData
+    private val disposables = CompositeDisposable()
     private lateinit var challengeId: String
 
     fun selectChallenge(challengeId: String) {
@@ -34,5 +36,11 @@ class ChallengeDetailsViewModel @ViewModelInject constructor(
             }, { error ->
                 _challengeLiveData.postValue(StateResponse.GenericError(error))
             })
+        disposables.add(disposable)
+    }
+
+    override fun onCleared() {
+        disposables.clear()
+        super.onCleared ();
     }
 }
